@@ -5,10 +5,49 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="{% static 'index.css' %}">
+  <link rel="stylesheet" href="{% static 'css/login/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/login/title.css' %}">
+  <link rel="stylesheet" href="{% static 'css/login/inputs.css' %}">
+  <link rel="stylesheet" href="{% static 'css/login/bottom.css' %}">
+
+  <title>School App</title>
 </head>
 <body>
-  <h1>login</h1>
+  <div id="app">
+    <div class="container-login">
+      <form action="#" class="container-form" method="post">{% csrf_token %}
+
+        <div class="title">
+          <h1>School App</h1>
+        </div>
+
+        <div class="inputs">
+          <h3 class="input-title">CPF ou Código</h3>
+          <input name="cpf" type="text" class="input-text" placeholder="000.000.000-00" max="11" maxlength="11">
+
+          <h3 class="input-title">Senha</h3>
+          <input name="password" type="password" class="input-text" placeholder="exemplo123!">
+
+          <div class="checkbox">
+            <span style="display: flex; align-items: center;">
+              <input type="checkbox" id="lembra"><label for="lembra" class="text">lembrar de mim</label>
+            </span>
+            <select name="type" id="">
+              <option value="professor">Professor</option>
+              <option value="estudante">Estudante</option>
+              <option value="admin">admin</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="bottom">
+          <button class="btn-submit" type="submit">Entrar</button>
+          <p style="color: rgb(231, 120, 92);" class="message-error">{{ error }}</p>
+          <!-- <a class="text">esqueci minha senha</a> -->
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="{% static 'js/login.js' %}"></script>
 </body>
 </html>
