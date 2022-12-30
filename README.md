@@ -37,25 +37,23 @@
 ### Como rodar:
 Você deve ter o python instalado localmente
 ```bash
-Windows (use o powershell)
+Linux e Mac
 > git clone https://github.com/mjrdev/school-app.git
 > cd school-app
-> python -m venv venv
+> python3 -m venv venv
 > source .venv/bin/activate
 > pip install -r requirements.txt
-> python contrib/env_gen.py
 > python manage.py migrate
 > python manage.py createsuperuser --username 'username' --email 'email'
 > python manage.py runserver
 ```
 ```bash
-Linux e Mac
+Windows (use o powershell)
 $ git clone https://github.com/mjrdev/school-app.git
-$ cd django-simples
-$ python3 -m venv venv
+$ cd school-app
+$ python -m venv venv
 $ venv\Scripts\Activate.ps1
 $ pip install -r requirements.txt
-$ python contrib\env_gen.py
 $ python manage.py migrate
 $ python manage.py createsuperuser --username 'username' --email 'email'
 $ python manage.py runserver
