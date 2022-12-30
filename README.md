@@ -40,7 +40,7 @@ Você deve ter o python instalado localmente
 Windows (use o powershell)
 > git clone https://github.com/mjrdev/school-app.git
 > cd school-app
-> python3 -m venv .venv
+> python -m venv .venv
 > source .venv/bin/activate
 > pip install -r requirements.txt
 > python contrib/env_gen.py
@@ -52,7 +52,7 @@ Windows (use o powershell)
 Linux e Mac
 $ git clone https://github.com/mjrdev/school-app.git
 $ cd django-simples
-$ python -m venv .venv
+$ python3 -m venv .venv
 $ venv\Scripts\Activate.ps1
 $ pip install -r requirements.txt
 $ python contrib\env_gen.py
