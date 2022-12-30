@@ -1,6 +1,6 @@
 ## Aplicação Web de Gerenciamento Escolar
 ##### Case de Processo Seletivo Dev FullStack
-#### Tecnologias utilizadas:
+### Tecnologias utilizadas:
 > Python, Django, SQLite, HTML, CSS e JavaScript
 
 ##### Estrutura do projeto
@@ -21,20 +21,25 @@
  * /static   - arquivos estáticos
 
 
-#### A aplicação consiste em 2 níveis de usuários:
+## A aplicação consiste em 2 níveis de usuários:
   * __Admin__: Tem total controle da dos dados da aplicação
     * Acesso em /admin e  /school-admin
   * __User__: Dividido em dois
     * Aluno: Acesso apenas a plataforma de informações /user
     * Professor: Acesso apenas a plataforma de informações /user
 
-
-Como rodar:
+### Entidades da aplicação
+  1. Students - Alunos
+  1. Teacher - Professores
+  1. Courses - Cursos
+  1. Registrations - Matriculas
+### Como rodar:
+Você deve ter o python instalado localmente
 ```bash
 Windows (use o powershell)
 > git clone https://github.com/mjrdev/school-app.git
 > cd school-app
-> python -m venv .venv
+> python3 -m venv .venv
 > source .venv/bin/activate
 > pip install -r requirements.txt
 > python contrib/env_gen.py
