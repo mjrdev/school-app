@@ -1,11 +1,5 @@
 from django.db import models
 
-import string
-import random
-
-def generate_code(stringSize, NumberSize):
-  return ''.join(random.choice(string.ascii_uppercase) for _ in range(stringSize)) + ''.join(random.choice(string.digits) for _ in range(NumberSize))
-
 class Student(models.Model):
   name = models.CharField(max_length=90)
   email = models.EmailField()
@@ -16,6 +10,7 @@ class Student(models.Model):
 
   def __str__(self):
     return self.name
+
 
 class Teacher(models.Model):
   name = models.CharField(max_length=90)
@@ -32,15 +27,15 @@ class Course(models.Model):
   shift = models.CharField(max_length=15, choices=SHIFT)
   title = models.CharField(max_length=90)
   description = models.TextField()
-  teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
-  # workload = models.IntegerField()
+  teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='courses')
+
   def __str__(self):
     return self.title + ' - ' + self.shift
 
 class Registration(models.Model):
-  code = models.CharField(max_length=9, default=generate_code(3, 6))
-  course_id = models.ForeignKey(Course, on_delete=models.CASCADE)
-  student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
+  code = models.CharField(max_length=7)
+  student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="registrations")
+  course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="registrations")
 
   def __str__(self):
     return self.code

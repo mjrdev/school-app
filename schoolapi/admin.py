@@ -17,8 +17,8 @@ class Teachers(admin.ModelAdmin):
   search_fields = ('name',)
 
 class Registrations(admin.ModelAdmin):
-  list_display = ('id', 'student_id', 'course_id')
-  list_display_links = ('id', 'course_id', 'student_id')
+  list_display = ('id',)
+  list_display_links = ('id',)
   search_fields = ('id',)
 
 admin.site.register(Student, Students)

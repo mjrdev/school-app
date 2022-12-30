@@ -1,5 +1,5 @@
 ## Aplicação Web de Gerenciamento Escolar
-##### Desafio 
+##### Case de Processo Seletivo Dev FullStack
 #### Tecnologias utilizadas:
 > Python, Django, SQLite, HTML, CSS e JavaScript
 
@@ -19,3 +19,9 @@
     * models.py - arquivos e módulos/entidades
     * urls.py - arquivo de configuração de rotas
  * /static   - arquivos estáticos
+
+
+#### A aplicação consiste em 2 níveis de usuários:
+  * __Admin__: Tem total controle da dos dados da aplicação
+  * __User__: Dividido em dois
+    * Aluno: 

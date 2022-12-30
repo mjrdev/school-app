@@ -10,7 +10,9 @@
   <link rel="stylesheet" href="{% static 'css/login/inputs.css' %}">
   <link rel="stylesheet" href="{% static 'css/login/bottom.css' %}">
 
-  <title>School App</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <title>Gerenciador Escolar</title>
 </head>
 <body>
   <div id="app">
@@ -18,7 +20,7 @@
       <form action="#" class="container-form" method="post">{% csrf_token %}
 
         <div class="title">
-          <h1>School App</h1>
+          <h1>Gerenciador Escolar</h1>
         </div>
 
         <div class="inputs">
@@ -41,6 +43,7 @@
         </div>
 
         <div class="bottom">
+          
           <button class="btn-submit" type="submit">Entrar</button>
           <p style="color: rgb(231, 120, 92);" class="message-error">{{ error }}</p>
           <!-- <a class="text">esqueci minha senha</a> -->
