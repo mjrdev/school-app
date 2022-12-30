@@ -5,7 +5,9 @@ from schoolweb.generate import generate_code
 
 class Auth:
   def login(request):
-    if request.session.get('access_token'): return HttpResponseRedirect('/') 
+    type = request.POST.get('type')
+
+    if request.session.get('access_token'): return HttpResponseRedirect('/user')
     if(request.method == 'GET'):
       return render(request, './login.html')
 
@@ -13,7 +15,6 @@ class Auth:
     
     cpf = request.POST.get('cpf')
     password = request.POST.get('password')
-    type = request.POST.get('type')
 
     # switch para seleção de Model professor e aluno
 
@@ -25,11 +26,12 @@ class Auth:
         user = Student.objects.filter(cpf=cpf).first()
 
     if user:
-      if user.password == password: request.session['access_token'] = entities[type]+"-"+generate_code(5, 16)
+      if user.password == password:
+        request.session['access_token'] = entities[type]+"-"+user.name
       else: return render(request, './login.html', { 'error': 'CPF ou senha incorreta' })
     else: return render(request, './login.html', { 'error': 'usuário não encontrado' })
 
-    return HttpResponseRedirect('/{}/'.format(entities[type]))
+    return HttpResponseRedirect('/user')
 
 
   def logout(request):

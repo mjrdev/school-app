@@ -12,9 +12,10 @@ class TeacherSerializer(serializers.ModelSerializer):
     fields = ['id', 'name', 'cpf', 'email']
 
 class CourseSerializer(serializers.ModelSerializer):
+  teacher_id = TeacherSerializer(read_only=True)
   class Meta:
     model = Course
-    fields = ['id', 'shift', 'title', 'description']
+    fields = ['id', 'shift', 'title', 'description', 'teacher_id']
 
 class RegistrationSerializer(serializers.ModelSerializer):
   course_id = CourseSerializer(read_only=True)

@@ -6,6 +6,9 @@ class AuthMiddleware:
         self.urls = [
           '/login/', '/admin/', '/logout/'
         ]
+        self.urlsApplications = [
+          'user'
+        ]
         self.entities = { "professor": "teacher", "estudante": "students", "admin":"admin" }
 
     def __call__(self, request):
@@ -16,8 +19,11 @@ class AuthMiddleware:
           if pathSplit[1].replace('/', '') == url.replace('/', ''): return response
         
         token = request.session.get('access_token')
-        print(pathSplit[1].replace('/', ''), token.split('-')[0])
-        if token and pathSplit[1].replace('/', '') == token.split('-')[0]:
-          return response
-        else:
-          return HttpResponse('not authorized', status=401)
+        
+        permission = True
+        if token:
+          for url in self.urlsApplications:
+            if token and pathSplit[1].replace('/', '') == url:
+              return response
+            else:
+              return HttpResponseRedirect('/login')

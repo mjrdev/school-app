@@ -11,6 +11,8 @@ class Student(models.Model):
   email = models.EmailField()
   cpf = models.CharField(max_length=11, unique=True)
   password = models.CharField(default="12345678", max_length=35)
+  created_at = models.DateTimeField(auto_now_add=True)
+  updated_at = models.DateTimeField(auto_now=True)
 
   def __str__(self):
     return self.name
@@ -20,6 +22,7 @@ class Teacher(models.Model):
   email = models.EmailField()
   cpf = models.CharField(max_length=11)
   password = models.CharField(default="12345678", max_length=35)
+  about = models.CharField(max_length=255, null=True)
 
   def __str__(self):
     return self.name
@@ -29,6 +32,7 @@ class Course(models.Model):
   shift = models.CharField(max_length=15, choices=SHIFT)
   title = models.CharField(max_length=90)
   description = models.TextField()
+  teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
   # workload = models.IntegerField()
   def __str__(self):
     return self.title + ' - ' + self.shift
