@@ -23,5 +23,34 @@
 
 #### A aplicação consiste em 2 níveis de usuários:
   * __Admin__: Tem total controle da dos dados da aplicação
+    * Acesso em /admin e  /school-admin
   * __User__: Dividido em dois
-    * Aluno: 
+    * Aluno: Acesso apenas a plataforma de informações /user
+    * Professor: Acesso apenas a plataforma de informações /user
+
+
+Como rodar:
+```bash
+Windows (use o powershell)
+> git clone https://github.com/mjrdev/school-app.git
+> cd school-app
+> python -m venv .venv
+> source .venv/bin/activate
+> pip install -r requirements.txt
+> python contrib/env_gen.py
+> python manage.py migrate
+> python manage.py createsuperuser --username 'username' --email 'email'
+> python manage.py runserver
+```
+```bash
+Linux e Mac
+$ git clone https://github.com/mjrdev/school-app.git
+$ cd django-simples
+$ python -m venv .venv
+$ venv\Scripts\Activate.ps1
+$ pip install -r requirements.txt
+$ python contrib\env_gen.py
+$ python manage.py migrate
+$ python manage.py createsuperuser --username 'username' --email 'email'
+$ python manage.py runserver
+```
