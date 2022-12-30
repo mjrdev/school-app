@@ -33,6 +33,7 @@
   1. Teacher - Professores
   1. Courses - Cursos
   1. Registrations - Matriculas
+  1. Admin - Super User do Django
 ### Como rodar:
 Você deve ter o python instalado localmente
 ```bash
