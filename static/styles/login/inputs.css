@@ -1,0 +1,41 @@
+
+.inputs {
+  width: 100%;
+  display: flex; flex-direction: column; gap: 0.3rem;
+}
+
+.container-form {
+  width: 80%;
+
+  display: flex; flex-direction: column; align-items: center;
+}
+
+.input-title {
+  font-size: 14px;
+  font-weight: 400;
+  color: #3162E1;
+}
+
+.checkbox {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.4rem;
+  gap: 0 1rem;
+}
+
+.checkbox > select {
+  border: 1px solid rgb(209, 209, 209);
+  padding: 0.2rem 0.5rem; border-radius: 5px;
+}
+
+.input-text {
+  outline: none;
+  border: none;
+  height: 2.5rem;
+  border-radius: 8px;
+  background-color: #F6F6F6;
+  padding: 0 1rem;
+}
+
+.input-text::placeholder {
+  color: #3163e11e;
+}

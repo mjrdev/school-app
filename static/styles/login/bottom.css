@@ -1,0 +1,16 @@
+.bottom {
+  width: 80%;
+  display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+}
+
+.btn-submit {
+  width: 100%;
+  height: 3.5rem;
+  background-color: #3162E1;
+  border-radius: 16px;
+  border: none;
+  font-family: 'Rubik', sans-serif;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 24px;
+}
