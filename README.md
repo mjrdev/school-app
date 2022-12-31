@@ -6,7 +6,6 @@
 ![admin platform](/docs/admin.jpg)
 
 ##### Estrutura do projeto
- * /database  - arquivo do banco de dados
  * /schoolapi - arquivos e módulos da 
     * admin.py - configura entidades para o admin do Django
     * models.py - arquivos e módulos/entidades
@@ -21,11 +20,12 @@
     * models.py - arquivos e módulos/entidades
     * urls.py - arquivo de configuração de rotas
  * /static   - arquivos estáticos
+ * db.sqlite3  - arquivo do banco de dados
 
 
 ## A aplicação consiste em 2 níveis de usuários:
-  * __Admin__: Tem total controle da dos dados da aplicação
-    * Acesso em /admin e  /school-admin
+  * __Admin__: Tem total controle dos dados da aplicação
+    * Acesso em /admin e /school-admin
   * __User__: Dividido em dois
     * Aluno: Acesso apenas a plataforma de informações /user
     * Professor: Acesso apenas a plataforma de informações /user
@@ -40,13 +40,15 @@
   1. Admin - Super User do Django
 
 ### Como rodar:
+
 Com docker
 ```bash
-> git clone https://github.com/mjrdev/school-app.git
-> cd school-app
-> docker-compose up --build -d
-> docker exec -it django bash
-> python manage.py createsuperuser --username 'username' --email 'email'
+$ git clone https://github.com/mjrdev/school-app.git
+$ cd school-app
+$ docker-compose up --build -d
+$ docker exec -it django bash
+$ python manage.py migrate
+$ python manage.py createsuperuser --username 'username' --email 'email'
 /* informe o username e email do admin, sem aspas. É necessário para primeiro acesso a aplicação */
 ```
 Acesse: http://localhost:8000
