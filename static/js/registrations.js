@@ -27,12 +27,12 @@ function add(event) {
 
   $('#loading').show();
 
-  let code = document.getElementById('code').value;
   let course = document.getElementById('course').value;
   let student = document.getElementById('student').value;
 
   const data = {
-    code, course, student
+    code: '123',
+    course, student
   }
 
   send(data);
@@ -53,3 +53,26 @@ function del(id) {
       $('#warning').show().text('Não foi possível deletar a matrícula')
     })
 }
+
+function search(str) {
+  const items = document.getElementsByClassName('item')
+
+  for (let item of items) {
+    let searchAt = item.getElementsByTagName('span')[0].innerHTML.toLowerCase().indexOf(str);
+    if (searchAt != -1) {
+      item.style.setProperty('display', 'flex', 'important')
+    } else {
+      item.style.setProperty('display', 'none', 'important')
+    }
+
+    if (str.length == 0) {
+      item.style.setProperty('display', 'flex', 'important')
+    }
+  }
+}
+
+document.getElementById('search')
+  .addEventListener('input', () => {
+  let str = document.getElementById('search').value.toLowerCase()
+  search(str)
+})

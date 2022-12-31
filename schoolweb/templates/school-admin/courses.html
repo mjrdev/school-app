@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,41 +53,43 @@
     </div>
   </header>
   
-  <main class="container mb-2" style="min-height: 85vh;">
+  <main class="container mb-3" style="min-height: 85vh;">
 
-    <h2 class="my-4">Criação e Listagem de Cursos</h2>
+    <h2 class="my-4">Controle de cursos</h2>
 
+    {% if teachers_count %}
     <form class="mb-5" id="form-course">{% csrf_token %}
       <div class="row justify-content-center">
-        <div class="col-4">
+        <div class="col-lg-5">
           <label for="title">Título</label>
-          <input id="title" type="text" class="form-control">
+          <input id="title" type="text" class="form-control" required>
         </div>
-        <div class="col-6">
+        <div class="col-lg-7">
           <label for="description">Breve descrição</label>
           <input id="description" type="text" class="form-control">
         </div>
       </div>
       
       <div class="row justify-content-center align-items-end mt-2">
-        <div class="col-3 gap-2">
+        <div class="col-lg-3 gap-2">
           <label for="title">Professor</label>
-          <select id="teacher" name="teacher_id" id="" class="form-control">
+          <select id="teacher" name="teacher_id" id="" class="form-control" required>
             {% for teacher in teachers %}
               <option value="{{ teacher.id }}">{{ teacher.name }}</option>
             {% endfor%}
           </select>
         </div>
-        <div class="col-3 gap-2">
+        <div class="col-lg-3 gap-2">
           <label for="title">Turno</label>
-          <select id="shift" name="shift" id="" class="form-control">
-            <option value="matutino">matutino</option>
-            <option value="vespertino">vespertino</option>
-            <option value="noturno">noturno</option>
-            <option value="integral">integral</option>
+          <select id="shift" name="shift" id="" class="form-control" required>
+            <option value="matutino">Matutino</option>
+            <option value="vespertino">Vespertino</option>
+            <option value="noturno">Noturno</option>
+            <option value="integral">Integral</option>
+            <option value="EAD">EAD</option>
           </select>
         </div>
-        <button class="col-3 btn btn-primary" type="submit">adicionar</button>
+        <button class="col-3 btn btn-primary mt-2" type="submit">adicionar</button>
       </div>
       <div class="row justify-content-center mt-3" id="loading">
         <div class="spinner-border text-info" role="status">
@@ -95,6 +97,10 @@
         </div>
       </div>
     </form>
+
+    {% else %}
+      <h4 class="text-center my-5">Adicione um professor para adicionar novos cursos</h4>
+    {% endif %}
 
     <div id="warning" class="alert alert-warning my-4" role="alert">
       Preencha todos os campos
@@ -104,11 +110,12 @@
       Curso adicionado com sucesso
     </div>
 
-    <h5>Todos os cursos</h5>
+    {% if teachers_count %}<h5>Total de cursos: {{ courses_count }}</h5>{% endif%}
+    <input type="text" class="form-control mb-3" placeholder="Buscar por cursos" id="search">
     <ul class="list-group">
       {% for course in courses %}
-        <li class="list-group-item d-flex justify-content-between">
-          <span>{{ course.id }} - {{ course.title }} - {{ course.shift }} - {{ course.teacher.name }}</span>
+        <li class="list-group-item d-flex justify-content-between item">
+          <span>id: {{ course.id }} - {{ course.title }} - {{ course.shift }} - {{ course.teacher.name }}</span>
           <span style="cursor: pointer;" onclick="del({{ course.id }})"><span class="material-symbols-outlined">delete</span></span>
         </li>
       {% endfor %}

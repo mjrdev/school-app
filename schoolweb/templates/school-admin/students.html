@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,27 +53,27 @@
     </div>
   </header>
   
-  <main class="container" style="height: 85vh;">
+  <main class="container mb-3" style="min-height: 85vh;">
 
-    <h2 class="my-4">Criação e Listagem de Estudantes</h2>
+    <h2 class="my-4">Controle de alunos</h2>
 
     <form action="" class="mb-5" id="form-student">{% csrf_token %}
       <div class="row justify-content-center">
-        <div class="col-3">
+        <div class="col-lg-6">
           <label for="title">Nome</label>
-          <input id="name" type="text" class="form-control">
+          <input id="name" type="text" class="form-control" required>
         </div>
-        <div class="col-3">
+        <div class="col-lg-6">
           <label for="description">CPF</label>
-          <input id="cpf" type="text" class="form-control" maxlength="11">
+          <input id="cpf" type="text" class="form-control" maxlength="11" required>
         </div>
-        <div class="col-3">
+        <div class="col-lg-6">
           <label for="description">Email</label>
-          <input id="email" type="email" class="form-control">
+          <input id="email" type="email" class="form-control" required>
         </div>
-        <div class="col-3">
+        <div class="col-lg-6">
           <label for="description">Senha</label>
-          <input id="password" type="text" class="form-control">
+          <input id="password" type="text" class="form-control" required>
         </div>
       </div>
       
@@ -90,11 +90,12 @@
       Estudante adicionado com sucesso
     </div>
 
-    <h5>Todos os professores</h5>
+    <h5 class="e">Total de estudantes: {{ students_count }}</h5>
+    <input type="text" class="form-control mb-3" placeholder="Buscar por estudante" id="search">
     <ul class="list-group">
       {% for student in students %}
-        <li class="list-group-item d-flex justify-content-between">
-          <span>{{ student.id }} - {{ student.name }} - {{ student.email }}</span>
+        <li class="list-group-item d-flex justify-content-between item" >
+          <span>id: {{ student.id }} - {{ student.name }} - {{ student.email }}</span>
           <span style="cursor: pointer;" onclick="del({{ student.id }})"><span class="material-symbols-outlined">delete</span></span>
         </li>
       {% endfor %}

@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,19 +53,16 @@
     </div>
   </header>
   
-  <main class="container" style="height: 85vh;">
+  <main class="container mb-3" style="min-height: 85vh;">
 
-    <h2 class="my-4">Matrículas</h2>
+    <h2 class="my-4">Controle de matrículas</h2>
 
+    {% if courses_count != 0 and students_count != 0 %}
     <form action="" class="mb-5" id="form-registration">
       <div class="row justify-content-center">
-        <div class="col-4">
-          <label for="">Código de matrícula</label>
-          <input type="text" class="form-control" maxlength="7" id="code">
-        </div>
 
-        <div class="col-4">
-          <label for="">ID do Curso</label>
+        <div class="col-6">
+          <label for="">Curso</label>
           <select name="" id="course" class="form-control">
             {% for course in courses  %}
               <option value="{{ course.id }}">{{course.title}}</option>
@@ -73,8 +70,8 @@
           </select>
         </div>
 
-        <div class="col-4">
-          <label for="">ID do Estudante</label>
+        <div class="col-6">
+          <label for="">Estudante</label>
           <select name="" id="student" class="form-control">
             {% for student in students  %}
               <option value="{{ student.id }}">{{student.name}}</option>
@@ -84,9 +81,13 @@
       </div>
       
       <div class="row justify-content-center align-items-end mt-2">
-        <button class="col-3 btn btn-primary">adicionar</button>
+        <button class="col-6 col-lg-3 btn btn-primary">criar matrícula</button>
       </div>
     </form>
+
+    {% else %}
+      <h4 class="text-center my-5">Adicione pelo menos um curso e um aluno para adicionar uma nova matrícula</h4>
+    {% endif %}
 
     <div id="warning" class="alert alert-warning my-4" role="alert">
       Preencha todos os campos
@@ -96,11 +97,12 @@
       Matrícula criada com sucesso
     </div>
 
-    <h5>Todos os registros</h5>
+    {% if courses_count > 0 and students_count > 0 %}<h5>Total de matriculas: {{ registrations_count }}</h5>{% endif%}
+    <input type="text" class="form-control mb-3" placeholder="Buscar por matrícula" id="search">
     <ul class="list-group">
       {% for registration in registrations %}
-        <li class="list-group-item d-flex justify-content-between">
-          <span>{{ registration.id }} - {{ registration.student }} - {{ registration.course }}</span>
+        <li class="list-group-item d-flex justify-content-between item">
+          <span>id: {{ registration.id }} - {{ registration.student }} - {{ registration.course }} - Código da Matrícula: {{ registration.code }}</span>
           <span style="cursor: pointer;" onclick="del({{ registration.id }})"><span class="material-symbols-outlined">delete</span></span>
         </li>
       {% endfor %}

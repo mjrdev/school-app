@@ -10,22 +10,27 @@ class Admin:
     return render(request, 'school-admin/index.html', { 'admin': admin })
   def courses(request):
     courses = Course.objects.all()
-    teacher = Teacher.objects.all()
-    return render(request,'school-admin/courses.html', { 'courses': courses, 'teachers': teacher })
+    teachers = Teacher.objects.all()
+
+    return render(request,'school-admin/courses.html', {
+      'courses': courses, 'teachers': teachers, 'teachers_count': len(teachers), 'courses_count': len(courses)
+    })
   def teachers(request):
 
     teachers = Teacher.objects.all()
-    return render(request, 'school-admin/teachers.html', { 'teachers': teachers })
+    return render(request, 'school-admin/teachers.html', { 'teachers': teachers, 'teachers_count': len(teachers) })
   def students(request):
 
     students = Student.objects.all()
-    return render(request, 'school-admin/students.html', { 'students': students })
+    return render(request, 'school-admin/students.html', { 'students': students, 'students_count': len(students) })
   def registrations(request):
 
     registrations = Registration.objects.all()
     courses = Course.objects.all()
     student = Student.objects.all()
-    return render(request, 'school-admin/registrations.html', { 'registrations': registrations, 'courses': courses, 'students': student })
+    return render(request, 'school-admin/registrations.html', {
+      'registrations': registrations, 'courses': courses, 'students': student, 'courses_count': len(courses), 'students_count': len(student), 'registrations_count': len(registrations)
+    })
 
   def profile(request):
     return render(request, 'school-admin/profile.html')

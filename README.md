@@ -1,7 +1,7 @@
 ## Aplicação Web de Gerenciamento Escolar
 ##### Case de Processo Seletivo Dev FullStack
 ### Tecnologias utilizadas:
-> Python, Django, SQLite, HTML, CSS e JavaScript
+> Python, Django, SQLite, Docker, Bootstrap, HTML, CSS, JavaScript, JQuery
 
 ##### Estrutura do projeto
  * /database  - arquivo do banco de dados
@@ -41,30 +41,36 @@ Com docker
 > git clone https://github.com/mjrdev/school-app.git
 > cd school-app
 > docker-compose up --build -d
-> python manage.py migrate
+> docker exec -it django bash
 > python manage.py createsuperuser --username 'username' --email 'email'
+/* informe o username e email do admin, sem aspas. É necessário para primeiro acesso a aplicação */
 ```
-### Como rodar:
+Acesse: http://localhost:8000
+### Como rodar sem docker:
 Você deve ter o python instalado localmente
 ```bash
 Linux e Mac
-> git clone https://github.com/mjrdev/school-app.git
-> cd school-app
-> python3 -m venv venv
-> source .venv/bin/activate
-> pip install -r requirements.txt
-> python manage.py migrate
-> python manage.py createsuperuser --username 'username' --email 'email'
-> python manage.py runserver
-```
-```bash
-Windows (use o powershell)
 $ git clone https://github.com/mjrdev/school-app.git
 $ cd school-app
-$ python -m venv venv
-$ venv\Scripts\Activate.ps1
+$ python3 -m venv venv
+$ source venv/bin/activate
 $ pip install -r requirements.txt
 $ python manage.py migrate
 $ python manage.py createsuperuser --username 'username' --email 'email'
+/* informe o username e email do admin, sem aspas. É necessário para primeiro acesso a aplicação */
 $ python manage.py runserver
 ```
+Acesse: http://localhost:8000
+```bash
+Windows (use o powershell)
+> git clone https://github.com/mjrdev/school-app.git
+> cd school-app
+> python -m venv venv
+> venv\Scripts\Activate.ps1
+> pip install -r requirements.txt
+> python manage.py migrate
+> python manage.py createsuperuser --username 'username' --email 'email'
+/* informe o username e email do admin, sem aspas. É necessário para primeiro acesso a aplicação */
+> python manage.py runserver
+```
+Acesse: http://localhost:8000

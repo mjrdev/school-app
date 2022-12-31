@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,40 +53,40 @@
     </div>
   </header>
   
-  <main class="container" style="height: 85vh;">
+  <main class="container mb-3" style="min-height: 85vh;">
 
-    <h2 class="my-4">Criação e Listagem de Professores</h2>
+    <h2 class="my-4">Controle de professores</h2>
 
     <form action="" class="mb-5" id="form-teacher">
       <div class="row justify-content-center">
-        <div class="col-3">
+        <div class="col-lg-3">
           <label for="title">Nome</label>
           <input id="name" type="text" class="form-control" required>
         </div>
-        <div class="col-3">
+        <div class="col-lg-3">
           <label for="cpf">CPF</label>
           <input id="cpf" type="text" class="form-control" maxlength="11" max="11" required>
         </div>
-        <div class="col-4">
+        <div class="col-lg-4">
           <label for="email">Email</label>
           <input id="email" type="text" class="form-control" required>
         </div>
       </div>
       
       <div class="row justify-content-center">
-        <div class="col-10">
+        <div class="col-lg-10">
           <label for="about">Sobre</label>
-          <input class="form-control" type="text" name="about" id="about" required>
+          <input class="form-control" type="text" name="about" id="about" >
         </div>
       </div>
 
       <div class="row justify-content-center align-items-end mt-2">
         
-        <div class="col-4">
+        <div class="col-lg-4">
           <label for="password">Senha</label>
           <input id="password" type="text" class="form-control" required>
         </div>
-        <button class="col-2 btn btn-primary">adicionar</button>
+        <button class="col-lg-2 col-8 btn btn-primary mt-3">adicionar</button>
         
       </div>
     </form>
@@ -99,11 +99,12 @@
       Professor adicionado com sucesso
     </div>
 
-    <h5>Todos os professores</h5>
+    <h5>Total de professores: {{ teachers_count }}</h5>
+    <input type="text" class="form-control mb-3" placeholder="Buscar por professor" id="search">
     <ul class="list-group">
       {% for teacher in teachers %}
-        <li class="list-group-item d-flex justify-content-between">
-          <span>{{ teacher.id }} - {{ teacher.name }} - {{ teacher.email }} - {{ teacher.about }}</span>
+        <li class="list-group-item d-flex justify-content-between item">
+          <span>id: {{ teacher.id }} - {{ teacher.name }} - {{ teacher.email }}</span>
           <span style="cursor: pointer;" onclick="del({{ teacher.id }})"><span class="material-symbols-outlined">delete</span></span>
         </li>
       {% endfor %}

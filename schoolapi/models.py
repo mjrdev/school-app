@@ -23,7 +23,7 @@ class Teacher(models.Model):
     return self.name
 
 class Course(models.Model):
-  SHIFT = (('noturno', 'noturno'), ('matutino', 'matutino'), ('vespertino', 'vespertino'), ('integral', 'integral'))
+  SHIFT = (('noturno', 'noturno'), ('matutino', 'matutino'), ('vespertino', 'vespertino'), ('integral', 'integral'), ('EAD', 'EAD'))
   shift = models.CharField(max_length=15, choices=SHIFT)
   title = models.CharField(max_length=90)
   description = models.TextField()

@@ -1,4 +1,6 @@
-FROM python:3.10-buster
+FROM python:3.10-alpine
+
+RUN apk add bash
 
 ENV PYTHONNUNBBUFFERED=1
 

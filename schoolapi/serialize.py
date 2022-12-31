@@ -8,7 +8,10 @@ def generate_code(stringSize, NumberSize):
   return ''.join(random.choice(string.ascii_uppercase) for _ in range(stringSize)) + ''.join(random.choice(string.digits) for _ in range(NumberSize))
 
 class RegistrationSerializer(serializers.ModelSerializer):
-  # student = StudentSerializer(read_only=True)
+  def create(self, validated_data):
+    print(validated_data, validated_data['code'])
+    validated_data['code'] = generate_code(3, 4)
+    return Registration.objects.create(**validated_data)
   class Meta:
     model = Registration
     fields = ['id', 'code', 'student', 'course']
@@ -16,9 +19,6 @@ class RegistrationSerializer(serializers.ModelSerializer):
 class CourseSerializer(serializers.ModelSerializer):
   registrations = RegistrationSerializer(read_only=True, many=True)
 
-  def create(self, validated_data):
-    validated_data['code'] = generate_code(3, 4)
-    return Course.objects.create(**validated_data)
   class Meta:
     model = Course
     fields = ['id', 'shift', 'title', 'description', 'teacher', 'registrations']

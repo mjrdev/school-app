@@ -44,6 +44,11 @@ function add(event) {
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
 
+  if (cpf.length != 11) {
+    $('#warning').show().text('CPF inválido')
+    return
+  }
+
   const data = {
     name,
     cpf,
@@ -70,3 +75,26 @@ function del(id) {
       $('#warning').show().text('Não foi possível deletar, esse Professor deve está vinculado a algum curso.')
     })
 }
+
+function search(str) {
+  const items = document.getElementsByClassName('item')
+
+  for (let item of items) {
+    let searchAt = item.getElementsByTagName('span')[0].innerHTML.toLowerCase().indexOf(str);
+    if (searchAt != -1) {
+      item.style.setProperty('display', 'flex', 'important')
+    } else {
+      item.style.setProperty('display', 'none', 'important')
+    }
+
+    if (str.length == 0) {
+      item.style.setProperty('display', 'flex', 'important')
+    }
+  }
+}
+
+document.getElementById('search')
+  .addEventListener('input', () => {
+  let str = document.getElementById('search').value.toLowerCase()
+  search(str)
+})
