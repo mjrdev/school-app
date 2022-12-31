@@ -1,8 +1,9 @@
-FROM python:3.10-buster
+FROM python:3.10-alpine
 
-# RUN apk add bash
+RUN apk add bash
 
 ENV PYTHONNUNBBUFFERED=1
+ENV PIP_ROOT_USER_ACTION=ignore
 
 WORKDIR /code
 
@@ -15,6 +16,6 @@ RUN mkdir /database
 
 RUN python manage.py migrate
 
-EXPOSE 8000 
+EXPOSE 8000
 
 CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000" ]
