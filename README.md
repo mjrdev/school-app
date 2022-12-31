@@ -34,6 +34,16 @@
   1. Courses - Cursos
   1. Registrations - Matriculas
   1. Admin - Super User do Django
+
+### Como rodar:
+Com docker
+```bash
+> git clone https://github.com/mjrdev/school-app.git
+> cd school-app
+> docker-compose up --build -d
+> python manage.py migrate
+> python manage.py createsuperuser --username 'username' --email 'email'
+```
 ### Como rodar:
 Você deve ter o python instalado localmente
 ```bash
