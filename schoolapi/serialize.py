@@ -27,11 +27,13 @@ class TeacherSerializer(serializers.ModelSerializer):
   courses = CourseSerializer(read_only=True, many=True)
   class Meta:
     model = Teacher
-    fields = ['id', 'name', 'cpf', 'email', 'courses']
+    fields = ['id', 'name', 'cpf', 'email', 'courses', 'password']
+    extra_kwargs = {'password': {'write_only': True }}
 
 class StudentSerializer(serializers.ModelSerializer):
   registrations = RegistrationSerializer(read_only=True, many=True)
   class Meta:
     model = Student
-    fields = ['id', 'name', 'cpf', 'email', 'registrations']
+    fields = ['id', 'name', 'cpf', 'email', 'registrations', 'password']
+    extra_kwargs = {'password': {'write_only': True }}
 

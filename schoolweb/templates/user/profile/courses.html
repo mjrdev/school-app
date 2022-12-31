@@ -51,10 +51,9 @@
     <div class="d-flex justify-content-start align-items-center gap-3">
       {% for reg in registrations %}
       <div class="card" style="width: 30vw;">
-        <h5 class="card-header">{{ reg.course_id }}</h5>
+        <h5 class="card-header">{{ reg.course }}</h5>
         <div class="card-body">
           <p class="card-text">Código de Matrícula: {{ reg.code }}</p>
-          <p class="card-text">Professor: {{ reg.teacher_id }}</p>
           <a href="#" class="btn btn-primary">acessar curso</a>
         </div>
       </div>

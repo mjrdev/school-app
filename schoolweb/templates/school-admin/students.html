@@ -95,7 +95,7 @@
     <ul class="list-group">
       {% for student in students %}
         <li class="list-group-item d-flex justify-content-between item" >
-          <span>id: {{ student.id }} - {{ student.name }} - {{ student.email }}</span>
+          <span>id: {{ student.id }} - {{ student.name }} - {{ student.email }} - CPF: {{ student.cpf }}</span>
           <span style="cursor: pointer;" onclick="del({{ student.id }})"><span class="material-symbols-outlined">delete</span></span>
         </li>
       {% endfor %}

@@ -37,6 +37,7 @@ class Auth:
         user = Student.objects.filter(cpf=cpf).first()
 
     if user:
+      # ADICIONAR BCRYPT NO PASSWORD E VALIDAÇÃO
       if user.password == password:
         request.session['access_token'] = entities[type]+"-"+user.name
         request.session['type'] = 'user'

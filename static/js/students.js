@@ -57,6 +57,8 @@ function add(event) {
     token
   }
 
+  console.log(password)
+
   send(data);
 }
 

@@ -4,7 +4,7 @@ class Student(models.Model):
   name = models.CharField(max_length=90)
   email = models.EmailField()
   cpf = models.CharField(max_length=11, unique=True)
-  password = models.CharField(default="12345678", max_length=35)
+  password = models.CharField(max_length=35)
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
 
@@ -16,7 +16,7 @@ class Teacher(models.Model):
   name = models.CharField(max_length=90)
   email = models.EmailField()
   cpf = models.CharField(max_length=11)
-  password = models.CharField(default="12345678", max_length=35)
+  password = models.CharField(max_length=35)
   about = models.CharField(max_length=255, null=True)
 
   def __str__(self):
