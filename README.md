@@ -3,6 +3,8 @@
 ### Tecnologias utilizadas:
 > Python, Django, SQLite, Docker, Bootstrap, HTML, CSS, JavaScript, JQuery
 
+![admin platform](/docs/admin.jpg)
+
 ##### Estrutura do projeto
  * /database  - arquivo do banco de dados
  * /schoolapi - arquivos e módulos da 
@@ -27,6 +29,8 @@
   * __User__: Dividido em dois
     * Aluno: Acesso apenas a plataforma de informações /user
     * Professor: Acesso apenas a plataforma de informações /user
+
+![user platform](/docs/user.jpg)
 
 ### Entidades da aplicação
   1. Students - Alunos
